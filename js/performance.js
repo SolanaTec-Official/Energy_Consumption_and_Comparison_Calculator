@@ -27,6 +27,8 @@ function calculateEnergyConsumption() {
     const genDiff = generationThisMonth - generationLastMonth;
     const totalConsDiff = totalConsumptionThisMonth - totalConsumptionLastMonth;
 
+    const importDiff = importThisMonth - importLastMonth;
+
     let genSentence = "", genColor = "";
     if (genDiff > 0) {
         genSentence = `Your solar system produced ${genDiff.toFixed(2)} kWh more than last month! 🌞`;
@@ -40,14 +42,14 @@ function calculateEnergyConsumption() {
     }
 
     let consSentence = "", consColor = "";
-    if (totalConsDiff > 0) {
-        consSentence = `Your total energy consumption increased by ${totalConsDiff.toFixed(2)} kWh compared to last month, which may increase your bill. ⚡`;
+    if (importDiff > 0) {
+        consSentence = `Your import energy increased by ${importDiff.toFixed(2)} kWh compared to last month, which may increase your bill. ⚡`;
         consColor = "red";
-    } else if (totalConsDiff < 0) {
-        consSentence = `Your total energy consumption decreased by ${Math.abs(totalConsDiff).toFixed(2)} kWh compared to last month, which may lower your bill. ✅`;
+    } else if (importDiff < 0) {
+        consSentence = `Your import energy decreased by ${Math.abs(importDiff).toFixed(2)} kWh compared to last month, which may lower your bill. ✅`;
         consColor = "green";
     } else {
-        consSentence = `Your total energy consumption is unchanged compared to last month.`;
+        consSentence = `Your total import energy is unchanged compared to last month.`;
         consColor = "gray";
     }
 
